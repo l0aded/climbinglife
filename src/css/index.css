@@ -1,0 +1,26 @@
+.main {
+  font-weight: bold;
+}
+
+.header {
+  position: fixed;
+  height: 5rem;
+  background-color: black;
+  opacity: 0.5;
+  width: 100%;
+  color: white;
+}
+
+.about {
+  padding-top: 5rem;
+  color: white;
+  height: 30em;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  text-align: center;
+  background-image: linear-gradient(
+                     rgba(20,20,20, .40),
+                     rgba(20,20,20, .40)),
+                     url('https://s3-us-west-1.amazonaws.com/climbinglife/mountains.jpeg');
+}
