@@ -1,4 +1,5 @@
 .main {
+  background-color: #FAFAFA;
 }
 
 .header {
@@ -68,22 +69,27 @@
 }
 
 .grid-container {
+  width: 80%;
   margin-top: 2rem;
   margin: auto;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-  grid-gap: 30px;
+  grid-gap: 10px;
 }
 
 .grid-item {
   margin-top: 1rem;
   height: 20rem;
-  padding: 0.5em;
   font-size: 30px;
   text-align: center;
 }
 
 .grid-image {
   max-width:100%;
-  max-height:100%;
+  max-height: 100%;
+}
+
+.seperator {
+  border-bottom: 1px grey solid;
+  margin: 3rem 50px 1rem 50px;
 }

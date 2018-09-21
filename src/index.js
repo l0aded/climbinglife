@@ -35,6 +35,8 @@ class Index extends React.Component<Props> {
 					<div className="announcement">
 					</div>
 				</div>
+				<div className="seperator">
+				</div>
 				<Grid
 					urls = {this.state.imageURLs}
 				/>
@@ -56,7 +58,9 @@ const Grid = ( {urls} ) => (
 )
 
 const Cell = ( {url} ) => (
-	<div className="grid-item"><img className="grid-image" src={url}/></div>
+	<div className="grid-item">
+		<img className="grid-image" src={url}/>
+	</div>
 )
 
 const dom = document.getElementById('App')
