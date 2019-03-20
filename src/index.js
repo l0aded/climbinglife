@@ -1,7 +1,14 @@
 /* @flow */
 
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom'
+import App from './components/App'
+import {
+  InstantSearch,
+  Configure
+} from 'react-instantsearch-dom';
+import { SEARCH_API_KEY, APP_ID, indexName } from '../algolia.js'
+
 //css
 require('./css/index.css');
 
@@ -9,9 +16,20 @@ type Props = {||};
 
 function Index() {
 	return (
-		<React.Fragment>
-			Index
-		</React.Fragment>
+		<div>
+			<InstantSearch
+				 appId={APP_ID}
+				 apiKey={SEARCH_API_KEY}
+				 indexName={indexName}
+
+			 >
+         <Configure
+           hitsPerPage={5}
+         />
+
+				 <App />
+			</InstantSearch>
+		</div>
 	)
 }
 

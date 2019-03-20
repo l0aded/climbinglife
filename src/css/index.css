@@ -1,3 +1,78 @@
 .main {
+  display: flex;
+  flex-direction: column;
+}
+/* SEARCH BAR */
+.search-container {
+  width: 100%;
+  border-bottom: 1px solid #c4c4c4;
+  display: block;
+  padding-right: 6rem;
+}
+
+/* HEADER */
+.header-container {
+  height: 6rem;
+  margin: auto;
+  font-family: "helvetica", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  border-bottom: 1px solid #c4c4c4;
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: row;
+}
+.header-image {
+  height: 4rem;
+  margin-right:3rem;
+}
+.header-button {
+  cursor: pointer;
+  padding: 1rem;
+}
+.header-right {
+  text-align: right;
+  padding: 1rem;
+}
+
+
+/* HITS */
+.hit-container-description {
+  margin-left: 12px;
+  display: flex;
+  flex-direction: column;
+}
+.hit-container {
+  /* margin: auto; */
+  display: flex;
+  /* flex-direction: row; */
+}
+.hit-container-title {
   font-weight: bold;
+}
+.hit-container-info {
+  font-size: 16px;
+}
+.hit-container-image {
+  width: 100px;
+}
+.hit-container img {
+  /* vertical-align: middle;
+  box-sizing: border-box; */
+  /* margin: auto; */
+  max-height: 100px;
+  max-width: 100px;
+}
+.ais-InfiniteHits-list {
+}
+.ais-InfiniteHits-item {
+  display:flex;
+  flex-direction: column;
+  list-style-type: none;
+  margin-top: 1rem;
+  padding: 1rem;
+  /* width: calc(25% - 1rem); */
+  width: 33%;
+  /* border: 1px solid #c4c8d8;
+  box-shadow: 0 2px 5px 0 #e3e5ec; */
 }
