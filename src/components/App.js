@@ -34,7 +34,6 @@ export default function App(props) {
 
   const setQuery = (query) => {
     setCurrentQuery(query);
-    console.log(query)
   }
 
   return (

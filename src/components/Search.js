@@ -13,9 +13,7 @@ const facetState = {
 export default function Search(props) {
   const facetList = ["Type", "Rating/Grade", "Stars"];
   const [currentFacet, setCurrentFacet] = useState(null);
-
   const triggerFacet = (facet) => {
-    console.log(facet)
     facet === currentFacet ? setCurrentFacet(null) : setCurrentFacet(facet);
   }
 

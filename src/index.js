@@ -21,9 +21,6 @@ function Index() {
 				 apiKey={SEARCH_API_KEY}
 				 indexName={indexName}
 			 >
-         <Configure
-           hitsPerPage={16}
-         />
 				 <App />
 			</InstantSearch>
 		</div>
