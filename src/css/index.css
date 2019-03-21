@@ -67,7 +67,7 @@
 }
 .header-button {
   cursor: pointer;
-  padding: 1rem;
+  /* padding: 1rem; */
   display: inline-block;
 }
 .header-right {
