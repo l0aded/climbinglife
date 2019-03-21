@@ -3,27 +3,31 @@ import Autosuggest from 'react-autosuggest';
 import {
   connectAutoComplete,
 } from 'react-instantsearch-dom';
+import { LOGOS } from '../constants/constants.js'
 
 require('../css/autocomplete.css');
 
-const OneHit = (props) => (
-  <div className='hit-container'>
-    <div className="hit-container-image">
-      <img src={props.hit.imgMedium} alt="Logo" />
+const OneHit = (props) => {
+  if (!props.hit.imgMedium) props.hit.imgMedium = LOGOS.noImage;
+  return (
+    <div className='auto-hit-container'>
+      <div className="auto-hit-container-image">
+        <img src={props.hit.imgMedium} alt="Logo" />
+      </div>
+      <div className="auto-hit-container-description">
+        <div className="auto-hit-container-title">
+          {props.hit.name} ({props.hit.rating})
+        </div>
+        <div className="auto-hit-container-info">
+          Rating: {props.hit.stars}
+        </div>
+        <div className="auto-hit-container-info">
+          Location: {props.hit.topLocation}
+        </div>
+      </div>
     </div>
-    <div className="hit-container-description">
-      <div className="hit-container-title">
-        {props.hit.name} ({props.hit.rating})
-      </div>
-      <div className="hit-container-info">
-        Rating: {props.hit.stars}
-      </div>
-      <div className="hit-container-info">
-        Location: {props.hit.topLocation}
-      </div>
-    </div>
-  </div>
-)
+  )
+}
 
 class AutoComplete extends React.Component<Props> {
   constructor(props) {
@@ -47,6 +51,7 @@ class AutoComplete extends React.Component<Props> {
   onSuggestionsFetchRequested ({ value }) {
     // this.props.refine(value);
     this.props.refine(this.state.value);
+    this.props.setQuery(this.state.value);
   };
 
   onSuggestionsClearRequested () {
@@ -59,15 +64,10 @@ class AutoComplete extends React.Component<Props> {
 
   renderSuggestion(hit) {
     var renderHit = <OneHit hit={hit} />
-
-
     return renderHit
   }
 
   renderSectionTitle(section) {
-    // if (section.index === "demo_Beachbody_Blog") return "Blogs"
-    // if (section.index === "beachbody_video") return "Videos"
-    // if (section.index === "demo_Beachbody_Store") return "Products"
     return 'Places';
   }
 
@@ -86,19 +86,17 @@ class AutoComplete extends React.Component<Props> {
     };
 
     return (
-      <div>
-        <Autosuggest
-          suggestions={hits}
-          multiSection={false}
-          onSuggestionsFetchRequested={this.onSuggestionsFetchRequested.bind(this)}
-          onSuggestionsClearRequested={this.onSuggestionsClearRequested.bind(this)}
-          getSuggestionValue={this.getSuggestionValue}
-          renderSuggestion={this.renderSuggestion}
-          inputProps={inputProps}
-          renderSectionTitle={this.renderSectionTitle}
-          getSectionSuggestions={this.getSectionSuggestions}
-        />
-      </div>
+      <Autosuggest
+        suggestions={hits}
+        multiSection={false}
+        onSuggestionsFetchRequested={this.onSuggestionsFetchRequested.bind(this)}
+        onSuggestionsClearRequested={this.onSuggestionsClearRequested.bind(this)}
+        getSuggestionValue={this.getSuggestionValue}
+        renderSuggestion={this.renderSuggestion}
+        inputProps={inputProps}
+        renderSectionTitle={this.renderSectionTitle}
+        getSectionSuggestions={this.getSectionSuggestions}
+      />
     );
   }
 }

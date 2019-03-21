@@ -11,7 +11,6 @@ import { SEARCH_API_KEY, APP_ID, indexName } from '../algolia.js'
 
 //css
 require('./css/index.css');
-
 type Props = {||};
 
 function Index() {
@@ -21,12 +20,10 @@ function Index() {
 				 appId={APP_ID}
 				 apiKey={SEARCH_API_KEY}
 				 indexName={indexName}
-
 			 >
          <Configure
-           hitsPerPage={5}
+           hitsPerPage={16}
          />
-
 				 <App />
 			</InstantSearch>
 		</div>

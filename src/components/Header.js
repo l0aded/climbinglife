@@ -1,36 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { HEADER, LOGOS } from '../constants/constants.js'
 
-const logo = 'https://cdn.apstatic.com/img/climb/logoHexInvert.svg'
+
 
 export default function Hits(props) {
   return (
-    <div className="header-container col-md-12">
-  		<img className="header-image" src={logo} />
-  			<div className="header-button">
-  				Temporary
-  			</div>
-  			<div className="header-button">
-  				Temporary
-  			</div>
-  			<div className="header-button">
-  				Temporary
-  			</div>
-  			<div className="header-button">
-  				Temporary
-  			</div>
-  			<div className="header-button">
-  				Temporary
-  			</div>
-  			<div className="header-button">
-  				Temporary
-  			</div>
-  			<div className="header-button">
-  				Temporary
-  			</div>
-  			<div className="header-right col-md-6">
-  				Log in
-  			</div>
+    <div className="header-container">
+  		<img className="header-image" src={LOGOS.small} />
+			<div className="header-button">
+				My Climbs
+			</div>
+      <div className="header-button">
+				Climbers
+			</div>
+			<div className="header-right">
+				{ HEADER.user }
+			</div>
   	</div>
   )
 }

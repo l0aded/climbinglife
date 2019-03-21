@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useReducer } from 'react';
 import styled from 'styled-components'
 import ReactDOM from 'react-dom'
-import { SearchBox, InfiniteHits } from 'react-instantsearch-dom';
-import Hits from './Hits';
+import { Pagination, Configure } from 'react-instantsearch-dom';
+import HitsContainer from './Hits';
 import Header from './Header';
 import Search from './Search';
 
@@ -28,17 +28,24 @@ function reducer(state, action) {
 }
 
 export default function App(props) {
-  const [user, setUser] = useState(null);
-  const [state, dispatch] = useReducer(reducer, initialState)
+  // const [user, setUser] = useState(null);
+  // const [state, dispatch] = useReducer(reducer, initialState)
+  const [currentQuery, setCurrentQuery] = useState("");
+
+  const setQuery = (query) => {
+    setCurrentQuery(query);
+    console.log(query)
+  }
+
   return (
     <div className="main">
       <Header />
-      <Search />
-
-      {/* <InfiniteHits
-        hitComponent={Hits}
-        translations={{loadMore: 'Load More Routes'}}
-      /> */}
+      <Search setQuery={setQuery.bind(this)} />
+      <Configure
+        hitsPerPage={16}
+        query={currentQuery}
+      />
+      <HitsContainer />
     </div>
   )
 }

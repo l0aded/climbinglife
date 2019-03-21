@@ -5,6 +5,7 @@ body {
 .react-autosuggest__container {
   position: relative;
   float: right;
+  display: inline-block;
 }
 
 .react-autosuggest__input {

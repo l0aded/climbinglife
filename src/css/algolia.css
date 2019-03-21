@@ -1,0 +1,30 @@
+.ais-RefinementList-list {
+  list-style-type: none;
+  padding-left: 0px;
+}
+.ais-RefinementList-item {
+  min-height: 24px;
+  font-size: 14px;
+}
+
+.ais-Hits-list, .ais-InfiniteHits-list {
+  padding-right: 40px;
+  margin: auto;
+  text-align: center;
+}
+.ais-Hits-item, .ais-InfiniteHits-item {
+  display:inline-block;
+  list-style-type: none;
+  margin-top: 1rem;
+  padding: 1rem;
+}
+.ais-InfiniteHits {
+  text-align: center;
+}
+
+.ais-InfiniteHits-loadMore {
+  margin-top: 2em;
+  margin-bottom: 2em;
+  height: 40px;
+  padding: 10px 20px;
+}
