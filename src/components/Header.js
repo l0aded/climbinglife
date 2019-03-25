@@ -31,7 +31,7 @@ const DropdownUser = (props) => {
       <button
         className="facet-button"
         onClick={() => props.triggerDropdown()}
-        >{props.currentUser}
+        >{props.currentUser[0]}
       </button>
       {props.showUserDropdown ?
         <div className="facet-button-dropdown">
@@ -42,7 +42,7 @@ const DropdownUser = (props) => {
                 key={index}
                 onClick={() => props.setUser(user)}
                 >
-                {user}
+                {user[0]}
               </div>
             ))}
           </ul>

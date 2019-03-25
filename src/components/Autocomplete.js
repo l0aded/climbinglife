@@ -8,26 +8,39 @@ import { LOGOS } from '../constants/constants.js'
 require('../css/autocomplete.css');
 
 const OneHit = (props) => {
-  if (!props.hit.imgMedium) props.hit.imgMedium = LOGOS.noImage;
   return (
     <div className='auto-hit-container'>
-      <div className="auto-hit-container-image">
-        <img src={props.hit.imgMedium} alt="Logo" />
-      </div>
       <div className="auto-hit-container-description">
         <div className="auto-hit-container-title">
-          {props.hit.name} ({props.hit.rating})
-        </div>
-        <div className="auto-hit-container-info">
-          Rating: {props.hit.stars}
-        </div>
-        <div className="auto-hit-container-info">
-          Location: {props.hit.topLocation}
+          {props.hit.query}
         </div>
       </div>
     </div>
   )
 }
+
+// AUTOCOMPLETE WITH ROUTES AND IMAGES
+// const OneHit = (props) => {
+//   if (!props.hit.imgMedium) props.hit.imgMedium = LOGOS.noImage;
+//   return (
+//     <div className='auto-hit-container'>
+//       <div className="auto-hit-container-image">
+//         <img src={props.hit.imgMedium} alt="Logo" />
+//       </div>
+//       <div className="auto-hit-container-description">
+//         <div className="auto-hit-container-title">
+//           {props.hit.name} ({props.hit.rating})
+//         </div>
+//         <div className="auto-hit-container-info">
+//           Rating: {props.hit.stars}
+//         </div>
+//         <div className="auto-hit-container-info">
+//           Location: {props.hit.topLocation}
+//         </div>
+//       </div>
+//     </div>
+//   )
+// }
 
 class AutoComplete extends React.Component<Props> {
   constructor(props) {
@@ -51,7 +64,7 @@ class AutoComplete extends React.Component<Props> {
   onSuggestionsFetchRequested ({ value }) {
     // this.props.refine(value);
     this.props.refine(this.state.value);
-    this.props.setQuery(this.state.value);
+    this.props.setQuery(value);
   };
 
   onSuggestionsClearRequested () {
@@ -59,7 +72,7 @@ class AutoComplete extends React.Component<Props> {
   };
 
   getSuggestionValue(hit) {
-    // return hit.name;
+    return hit.query;
   }
 
   renderSuggestion(hit) {
@@ -68,7 +81,7 @@ class AutoComplete extends React.Component<Props> {
   }
 
   renderSectionTitle(section) {
-    return 'Places';
+    return 'Routes';
   }
 
   getSectionSuggestions(section) {

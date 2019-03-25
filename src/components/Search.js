@@ -2,7 +2,10 @@ import React, { useState, useEffect, useReducer } from 'react';
 import ReactDOM from 'react-dom';
 import { InstantSearch, Configure, InfiniteHits, RefinementList } from 'react-instantsearch-dom';
 import { ConnectedAutoComplete } from './Autocomplete.js'
-import { SEARCH_API_KEY, APP_ID, indexName } from '../../algolia.js'
+import { SEARCH_API_KEY, APP_ID, indexName, AUTOCOMPLETE_INDEX } from '../../algolia.js'
+import { facetList } from '../constants/constants.js'
+
+import Horizontal from './Slider'
 
 require('../css/algolia.css');
 
@@ -11,9 +14,7 @@ const facetState = {
 };
 
 export default function Search(props) {
-  const facetList = ["Type", "Rating/Grade", "Stars"];
   const [currentFacet, setCurrentFacet] = useState(null);
-
   const triggerFacet = (facet) => {
     facet === currentFacet ? setCurrentFacet(null) : setCurrentFacet(facet);
   }
@@ -23,7 +24,7 @@ export default function Search(props) {
       <InstantSearch
 				 appId={APP_ID}
 				 apiKey={SEARCH_API_KEY}
-				 indexName={indexName}
+				 indexName={AUTOCOMPLETE_INDEX}
 			 >
          <Configure
            hitsPerPage={5}
@@ -33,6 +34,7 @@ export default function Search(props) {
       <div className="facets-container">
         {facetList.map((facet, index) => (
           <DropdownFacet
+            setPersoImpact={props.setPersoImpact}
             facet={facet}
             showDropDown={facet === currentFacet}
             triggerFacet={triggerFacet.bind(this)}
@@ -45,14 +47,31 @@ export default function Search(props) {
 }
 
 
+const PersoSlider = (props) => {
+  return (
+    <div>
+      <Horizontal
+        setPersoImpact={props.setPersoImpact}
+      />
+    </div>
+
+  )
+
+}
 const DropdownFacet = (props) => {
   var CustomDropdown = "Dropdown"
   switch(props.facet) {
     case "Type":
       CustomDropdown = <RefinementList attribute="type" />
       break;
-    case "Rating":
+    case "Rating/Grade":
       CustomDropdown = <RefinementList attribute="rating" />
+      break;
+    case "Stars":
+      CustomDropdown = <RefinementList attribute="stars" />
+      break;
+    case "Personalization":
+      CustomDropdown = <PersoSlider setPersoImpact={props.setPersoImpact}/>
       break;
     default:
       null
